@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/assets/css/burger_style.css" type="text/css" />
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<title>Eat-Da-Burger</title>
+</head>
+
+<body>
+	<form class="container-form">
+		<div class="flex-item">
+			<img src="burger.png" id="burgerImg" alt="burger icon">
+		</div>
+		<h1 class="mainText">Eat-Da-Burger!</h1>
+		{{{ body }}}
+		<textarea rows="4" cols="50" id="textArea"></textarea>
+		<button id="submitBurgerButton" type="submit">Submit</button>
+		<p>Enter a burger you want to eat. Click the "submit" button.</p>
+	</form>
+</body>
+
+<script>
+	$(".container-form").on("submit", function (event) {
+		event.preventDefault();
+
+		var newBurger = {
+			burger_name: $("#textArea").val().trim()
+		}
+		
+		$.ajax("/burgers", {
+			type: "POST",
+			data: newBurger
+		}).then(
+			function (res) {
+				console.log("created new burger");
+				location.reload();
+			}
+		)
+	});
+
+	$(".devourButton").on("click", function (event) {
+        var id = $(this).data("id");
+        console.log(id);
+        var hungerState = $(this).data("hungerState");
+
+        var newHungerState = {
+            devoured: 1
+            };
+        event.preventDefault();
+
+        $.ajax("/burgers/"+ id, {
+            type: "PUT",
+            data: newHungerState
+  }).then(function () {
+            // reload page to display devoured burger in proper column
+            location.reload();
+        });
+
+});
+</script>
+
+</html>

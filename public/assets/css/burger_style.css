@@ -1,0 +1,92 @@
+body {
+    background-color: #ffca63;
+    font-family: sans-serif;
+}
+
+#burgerImg {
+    height: 100px;
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 60vw;
+    align-items: center;
+}
+
+#flexFood {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+}
+
+.foodContainer {
+    font-size: 0.6em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 30vw;
+    padding: 0px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.devouredContainer {
+    font-size: 0.9em;
+}
+
+.burgerBox {
+    width: 250px;
+    height: 40px;
+    text-align: center;
+    background-color: white;
+    border: 1px solid rgba(211, 211, 211, 0.644);
+    padding-top: 10px;
+}
+
+.devouredBox {
+    font-size: 0.9em;
+    width: 250px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid rgba(211, 211, 211, 0.644);
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+}
+
+.left_list {
+    width: 30vw;
+}
+
+.mainText {
+    color: #f0653a;
+}
+
+p {
+    font-size: 0.8em;
+}
+
+.devourButton {
+    border-style: solid;
+    background-color: white;
+    border-color: rgba(211, 211, 211, 0.644);
+    border-width: 1px;
+    border-radius: 3px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+#submitBurgerButton {
+    background-color: #47719f;
+    color: white;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
+    margin-top: 10px;
+    padding: 5px;
+}

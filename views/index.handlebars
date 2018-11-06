@@ -1,0 +1,27 @@
+<div id="flexFood">
+    <ol class="left_list">
+        {{#each burger}}
+        {{#unless devoured}}
+        <div class="foodContainer">
+            <div class="burgerBox">
+                {{id}}. {{burger_name}}
+            </div>
+
+            <button class="devourButton" data-id="{{id}}" data-hungerState="{{devoured}}" type="submit">Devour it!</button>
+        </div>
+        {{/unless}}
+        {{/each}}
+    </ol>
+
+    <ol>
+        {{#each burger}}
+        {{#if devoured}}
+        <div class="devouredContainer">
+            <div class="devouredBox">
+                {{id}}. {{burger_name}}
+            </div>
+        </div>
+        {{/if}}
+        {{/each}}
+    </ol>
+</div>
