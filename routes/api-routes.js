@@ -6,24 +6,31 @@ var db = require("../models");
 // get Burger from this
 
 router.get("/index", function(req, res) {
-    db.Burger.findAll({}).then(function(dbBurger) {
-        res.json(dbBurger);
+    db.Burger.findAll({ attributes: ['id', 'burger_name', 'devoured'] }).then(function(dbBurger) {
+        // res.json(dbBurger);
+        burgerObj = { burger: [] };
+        // dbBurger.foreach(Burger => {
+        //         console.log(Burger.dataValues)
+        //     })
+        // It's an object
+        // console.log(typeof(dbBurger));
+        dbBurger.forEach(element => {
+            console.log(element.dataValues);
+            burgerObj.burger.push(element.dataValues);
+
+        });
+        console.log("Burger Obj!!" + JSON.stringify(burgerObj))
+        res.render("index", burgerObj);
+
     });
 
 })
 
 router.post("/burgers", function(req, res) {
-    // burger.insertOne([req.body.burger_name],
-    //     function(result) {
-    //         res.json({ id: result.insertId });
-    //     }
-    // )
 
     db.Burger.create({
         burger_name: req.body.burger_name,
     }).then(function(dbBurger) {
-
-        // We have access to the new todo as an argument inside of the callback function
         res.json(dbBurger);
     });
 })
@@ -31,15 +38,6 @@ router.post("/burgers", function(req, res) {
 router.put("/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
 
-    // burger.updateOne({ devoured: req.body.devoured }, condition,
-    //     function(result) {
-    //         if (result.changedRows == 0) {
-    //             return res.status(404).end();
-    //         } else {
-    //             res.status(200).end();
-    //         }
-    //     }
-    // )
     db.Burger.update({
         devoured: req.body.devoured
     }, {
@@ -53,5 +51,3 @@ router.put("/burgers/:id", function(req, res) {
 })
 
 module.exports = router;
-
-// route to index
